@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'alegreyasans-bold';
-    src: url(https://strathcyde.github.io/whatgrade/alegreyasans-bold-webfont.ttf) format('truetype');
+    src: url('https://strathcyde.github.io/whatgrade/alegreyasans-bold-webfont.ttf') format('truetype');
     }
 
     .mainheading{
