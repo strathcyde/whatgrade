@@ -1,4 +1,4 @@
-<!DOCTYPE = HTML>
+<!DOCTYPE html>
 <html lang = en>
 <head>
     <title>What grade must I get?</title>
@@ -7,11 +7,39 @@
 
 </head>
 <body>
-    <p class = 'mainheading'>What Grade Must I Get?</p>
-    <p class = 'subheadingLight'>This website calculates what grade you must get in your final assessment to achieve a desired overall class grade.</p1>
-<div id="desired">
-    <p class = 'subheadingBoldSmall'>Desired Overall Grade</p>
-    <p class = 'subheadingBoldSmall'>In percent. e.g. '60'.</p>
-    <input type="number" name="desired">
+
+<form id="forminputs">
+    <p class='mainheading'>What Grade Must I Get?</p>
+    <p class='subheadingLight'>This website calculates what grade you must get in your final assessment to achieve a desired overall class grade.</p1>
+<div id="iddesired">
+    <p class='subheadingBoldSmall'>Desired Overall Grade</p>
+    <p class='subheadingBoldSmall'>In percent. e.g. '60'.</p>
+    <input type="number" name="desired" value="60">
 </div>
+<div id="idresultBox">
+    <p class='inputbox'>You must achieve</p>
+    <div class="unstyledDiv" id="result"></div>
+</div>
+</form>
+
+
+
+<script>
+    const form = document.getElementById("forminputs");
+    const desired = form.elements["desired"];
+    const result = form.elements["result"];
+    console.log(desired.value)
+    function updateResult(){
+        console.log("input event triggered")
+        const desiredVal = parseInt(desired.value)
+        document.getElementById("result").textContent = desiredVal
+
+    }
+
+
+    form.addEventListener("input", updateResult);
+
+    updateResult();
+</script>
 </body>
+

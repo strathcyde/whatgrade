@@ -7,6 +7,10 @@ div{
     width: fit-content;
     height: fit-content;
     padding: 2%;
+    margin: 2%;
+}
+.unstyledDiv{
+    all: unset;
 }
 
 @font-face {
