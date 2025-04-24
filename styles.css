@@ -1,10 +1,49 @@
+body{
+    background: linear-gradient(to bottom, #ec4f9c, #F392C1)
+}
+/* #4F9CEC blue to go with*/
+div{
+    background-color: #9CEC4F;
+    width: fit-content;
+    height: fit-content;
+    padding: 2%;
+}
+
 @font-face {
     font-family: 'alegreyasans-bold';
     src: url('https://strathcyde.github.io/whatgrade/alegreyasans-bold-webfont.ttf') format('truetype');
     }
 
     .mainheading{
-      font-family: 'alegreyasans-bold';
-      font-size: 22pt;
+        font-family: 'alegreyasans-bold';
+        font-size: 36pt;
+        margin-bottom: -1%;
+        text-decoration: none;
+        text-align: center;
     }
-    
+
+    .subheadingBoldSmall{
+        font-family: 'alegreyasans-bold';
+        font-size: 14pt;
+        text-align: center;
+    }
+
+@font-face {
+    font-family: 'alegreyasans-regular';
+    src: url('https://strathcyde.github.io/whatgrade/alegreyasans-regular-webfont.ttf') format('truetype');
+    }
+
+    .subheadingLight{
+        font-family: 'alegreyasans-regular';
+        font-size: 20pt;
+        text-align: center;
+        font-style: italic;
+        padding-bottom: 8;
+        border-bottom-style:solid;
+    }
+
+    .inputbox{
+        font-family: 'alegreyasans-regular';
+        font-size: 12pt;
+        text-align: center;
+    }
