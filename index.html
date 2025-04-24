@@ -7,39 +7,90 @@
 
 </head>
 <body>
-
-<form id="forminputs">
+<div class="pagewrapper">
     <p class='mainheading'>What Grade Must I Get?</p>
     <p class='subheadingLight'>This website calculates what grade you must get in your final assessment to achieve a desired overall class grade.</p1>
-<div id="iddesired">
-    <p class='subheadingBoldSmall'>Desired Overall Grade</p>
-    <p class='subheadingBoldSmall'>In percent. e.g. '60'.</p>
-    <input type="number" name="desired" value="60">
+
+    <form id="forminputs">
+        <div class="main-layout">
+            <div class="sidebar" id="Desire&GetContainer">
+                <div class="vbox" id="iddesiredBox">
+                    <p class='subheadingBoldSmall'>Desired Overall Grade</p>
+                    <p class='subheadingBoldSmall'>In percent. e.g. '60'.</p>
+                    <input type="text" name="desired" placeholder="60">
+                </div>
+                <div class="vbox" id="idresultBox">
+                <p class='subheadingBoldSmall'>You must get:</p>
+                <div class="unstyledDiv" id="idresult"></div>
+                </div>
+            </div>
+            <div class="containerHORIZONTAL" id="InfoContainer">
+                <div class="box" id="idmarksOfFinalBox">
+                    <p class='inputbox'>Marks abailable in final assessment, if known</p>
+                    <input type="text" name="Marks">
+                </div>
+                <div class="box" id="idPartOne">
+                    <p class='inputbox'>Grade in test 1, in %</p>
+                    <input type="text" name="PartOne" placeholder="75">
+                    <p class='inputbox'>Weight on course, in %</p>
+                    <input type="text" name="WeightOne" placeholder="25">
+                </div>
+                <div class="box" id="idPartTwo">
+                    <p class='inputbox'>Grade in test 2, in %</p>
+                    <input type="text" name="PartTwo">
+                    <p class='inputbox'>Weight on course, in %</p>
+                    <input type="text" name="WeightTwo">
+                </div>
+                <div class="box" id="idPartThree">
+                    <p class='inputbox'>Grade in test 3, in %</p>
+                    <input type="text" name="PartThree">
+                    <p class='inputbox'>Weight on course, in %</p>
+                    <input type="text" name="WeightThree">
+                </div>
+                <div class="box" id="idPartFour">
+                    <p class='inputbox'>Grade in test 4, in %</p>
+                    <input type="text" name="PartFour">
+                    <p class='inputbox'>Weight on course, in %</p>
+                    <input type="text" name="WeightFour">
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
-<div id="idresultBox">
-    <p class='inputbox'>You must achieve</p>
-    <div class="unstyledDiv" id="result"></div>
-</div>
-</form>
 
 
 
 <script>
-    const form = document.getElementById("forminputs");
-    const desired = form.elements["desired"];
-    const result = form.elements["result"];
-    console.log(desired.value)
+const form = document.getElementById("forminputs");
     function updateResult(){
+
+        const inputs = document.querySelectorAll("input"); // Select all input elements
+        inputs.forEach(input => {
+            let value = input.value.replace(/[^0-9+\-*/.]/g, ''); // Remove invalid characters
+            console.log(value); // Log the sanitized value (or you can use it for further calculation)
+        });
+        
+        const desired = (form.elements["desired"]).value;
+        const Marks = (form.elements["Marks"]).value;
+        const PartOne = (form.elements["PartOne"]).value;
+        const PartTwo = (form.elements["PartTwo"]).value;
+        const PartThree = (form.elements["PartThree"]).value;
+        const PartFour = (form.elements["PartFour"]).value;
+
+        const WeightOne = (form.elements["WeightOne"]).value;
+        const WeightTwo = (form.elements["WeightTwo"]).value;
+        const WeightThree = (form.elements["WeightThree"]).value;
+        const WeightFour = (form.elements["WeightFour"]).value;
+        
+
         console.log("input event triggered")
-        const desiredVal = parseInt(desired.value)
-        document.getElementById("result").textContent = desiredVal
+        document.getElementById("idresult").innerText = desired;
+
 
     }
 
 
     form.addEventListener("input", updateResult);
 
-    updateResult();
 </script>
 </body>
-

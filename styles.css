@@ -1,16 +1,61 @@
-body{
-    background: linear-gradient(to bottom, #ec4f9c, #F392C1)
+.pagewrapper{
+    background: linear-gradient(to bottom, #161b40, #3e4cb5);
+    margin: 0;
 }
-/* #4F9CEC blue to go with*/
-div{
-    background-color: #9CEC4F;
-    width: fit-content;
-    height: fit-content;
+    
+.main-layout{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:row;
+}
+
+.containerHORIZONTAL{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap:10px;
+    padding: 10px;
+    align-items: center;
+    background: transparent;
+}
+
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap:10px;
+    padding: 10px;
+    /* align-items: center; */
+    background: transparent;
+}
+
+/* #4F9CEC blue to go with scheme*/
+.box{
+    background-color: #43bee5;
     padding: 2%;
-    margin: 2%;
+    margin: 0;
+    flex: 0 0 calc((100% - 50px) / 6);
+    align-items: center;
+    align-content: center;
+}
+
+.vbox{
+    background-color: #41b853;
+    text-align: center;
+    flex: 1;
+    padding: 10%;
+    margin: 10%;
+
 }
 .unstyledDiv{
     all: unset;
+}
+
+@media (max-width: 768px) {
+    .box {
+      flex: 1 1 calc((100% - 20px) / 2); /* 2 per row on smaller screens */
+    }
 }
 
 @font-face {
@@ -24,12 +69,13 @@ div{
         margin-bottom: -1%;
         text-decoration: none;
         text-align: center;
+        color: white;
     }
 
     .subheadingBoldSmall{
         font-family: 'alegreyasans-bold';
         font-size: 14pt;
-        text-align: center;
+        text-align:center;
     }
 
 @font-face {
@@ -44,6 +90,8 @@ div{
         font-style: italic;
         padding-bottom: 8;
         border-bottom-style:solid;
+        color: white;
+        border-color: #41b853;
     }
 
     .inputbox{
