@@ -12,7 +12,7 @@
     <p class='subheadingLight'>This website calculates what grade you must get in your final assessment to achieve a desired overall class grade.</p1>
 
     <form id="forminputs">
-        <div class="main-layout">
+        <div class="containerHORIZONTAL">
             <div class="sidebar" id="Desire&GetContainer">
                 <div class="vbox" id="iddesiredBox">
                     <p class='subheadingBoldSmall'>Desired Overall Grade</p>
@@ -63,40 +63,42 @@
 
 
 <script>
-    const form = document.getElementById("forminputs");
     // const nameArray = ['desired','Marks','PartOne', 'PartTwo', 'PartThree', 'PartFour', 'WeightOne', 'WeightTwo', 'WeightThree', 'WeightFour'];
+
+    const form = document.getElementById("forminputs");
+    // let desired = 0;
+    // let Marks = 0;
+    // let PartOne = 0;
+    // let PartTwo = 0;
+    // let PartThree = 0;
+    // let PartFour = 0;
+
+    // let WeightOne = 0;
+    // let WeightTwo = 0;
+    // let WeightThree = 0;
+    // let WeightFour = 0;
+    // let WeightFinal = 0;
+
     function updateResult(){
 
-        // const inputs = document.querySelectorAll("input"); // Select all input elements
-        // inputs.forEach(input => {
-        //     let value = input.value.replace(/[^0-9+\-*/.]/g, ''); // Remove invalid characters
-        //     console.log(value); // Log the sanitized value (or you can use it for further calculation)
-            
-        // });
-        
-        
-        const desired = (form.elements["desired"]).value.replace(/[^0-9+\-*/.]/g, '');
-        const Marks = (form.elements["Marks"]).value.replace(/[^0-9+\-*/.]/g, '');
+        let desired = eval((form.elements["desired"]).value.replace(/[^)(0-9+\-*/.]/g, ''));
+        let Marks = eval((form.elements["Marks"]).value.replace(/[^)(0-9+\-*/.]/g, ''));
 
-        const PartOne = (form.elements["PartOne"]).value.replace(/[^0-9+\-*/.]/g, '');
-        const PartTwo = (form.elements["PartTwo"]).value.replace(/[^0-9+\-*/.]/g, '');
-        const PartThree = (form.elements["PartThree"]).value.replace(/[^0-9+\-*/.]/g, '');
-        const PartFour = (form.elements["PartFour"]).value.replace(/[^0-9+\-*/.]/g, '');
+        let PartOne = eval((form.elements["PartOne"]).value.replace(/[^)(0-9+\-*/.]/g, ''));
+        let PartTwo = eval((form.elements["PartTwo"]).value.replace(/[^)(0-9+\-*/.]/g, ''));
+        let PartThree = eval((form.elements["PartThree"]).value.replace(/[^)(0-9+\-*/.]/g, ''));
+        let PartFour = eval((form.elements["PartFour"]).value.replace(/[^)(0-9+\-*/.]/g, ''));
 
-        const WeightOne = (form.elements["WeightOne"]).value.replace(/[^0-9+\-*/.]/g, '');
-        const WeightTwo = (form.elements["WeightTwo"]).value.replace(/[^0-9+\-*/.]/g, '');
-        const WeightThree = (form.elements["WeightThree"]).value.replace(/[^0-9+\-*/.]/g, '');
-        const WeightFour = (form.elements["WeightFour"]).value.replace(/[^0-9+\-*/.]/g, '');
-        const WeightFinal = (form.elements["WeightFinal"]).value.replace(/[^0-9+\-*/.]/g, '');
-        
-        const result = eval(((desired-((PartOne*WeightOne+PartTwo*WeightTwo+PartThree*WeightThree+PartFour*WeightFour)/100))/WeightFinal)*Marks)
+        let WeightOne = eval((form.elements["WeightOne"]).value.replace(/[^)(0-9+\-*/.]/g, ''));
+        let WeightTwo = eval((form.elements["WeightTwo"]).value.replace(/[^)(0-9+\-*/.]/g, ''));
+        let WeightThree = eval((form.elements["WeightThree"]).value.replace(/[^)(0-9+\-*/.]/g, ''));
+        let WeightFour = eval((form.elements["WeightFour"]).value.replace(/[^)(0-9+\-*/.]/g, ''));
+        let WeightFinal = eval((form.elements["WeightFinal"]).value.replace(/[^)(0-9+\-*/.]/g, ''));
 
-        console.log("input event triggered")
+        let result = (((desired-((PartOne*WeightOne+PartTwo*WeightTwo+PartThree*WeightThree+PartFour*WeightFour)/100))/WeightFinal)*Marks);
+        console.log("input event triggered");
         document.getElementById("idresult").innerText = result;
-
-
     }
-
 
     form.addEventListener("input", updateResult);
 
