@@ -80,7 +80,7 @@
     // let WeightFinal = 0;
 
     function updateResult(){
-
+        
         let desired = eval((form.elements["desired"]).value.replace(/[^)(0-9+\-*/.]/g, ''));
         let Marks = eval((form.elements["Marks"]).value.replace(/[^)(0-9+\-*/.]/g, ''));
 
@@ -95,9 +95,34 @@
         let WeightFour = eval((form.elements["WeightFour"]).value.replace(/[^)(0-9+\-*/.]/g, ''));
         let WeightFinal = eval((form.elements["WeightFinal"]).value.replace(/[^)(0-9+\-*/.]/g, ''));
 
-        let result = (((desired-((PartOne*WeightOne+PartTwo*WeightTwo+PartThree*WeightThree+PartFour*WeightFour)/100))/WeightFinal)*Marks);
-        console.log("input event triggered");
-        document.getElementById("idresult").innerText = result;
+
+        if (isNaN(desired) || isNaN(Marks) || isNaN(WeightFinal)){
+            let result = 'Err: Please Check Inputs';
+            document.getElementById("idresult").innerText = result;
+        } else {
+            if (isNaN(PartFour) || isNaN(WeightFour)) {
+                if (isNaN(PartThree) || isNAN(WeightThree)) {
+                    if (isNaN(PartTwo) || isNaN(WeightThree)) {
+                        if (isNaN(PartOne) || isNaN(WeightOne)) {
+                            let result = 'Enter more info';
+                            document.getElementById("idresult").innerText = result;
+                        } else {
+                            let result = eval(((desired-((PartOne*WeightOne)/100))/WeightFinal)*Marks);
+                            document.getElementById("idresult").innerText = result;
+                        }
+                    } else {
+                        let result = eval(((desired-((PartOne*WeightOne+PartTwo*WeightTwo)/100))/WeightFinal)*Marks);
+                        document.getElementById("idresult").innerText = result;
+                    }
+                } else {
+                    let result = eval(((desired-((PartOne*WeightOne+PartTwo*WeightTwo+PartThree*WeightThree)/100))/WeightFinal)*Marks);
+                    document.getElementById("idresult").innerText = result;
+                }
+            } else {
+                let result = eval(((desired-((PartOne*WeightOne+PartTwo*WeightTwo+PartThree*WeightThree+PartFour*WeightFour)/100))/WeightFinal)*Marks);
+                document.getElementById("idresult").innerText = result;
+            }
+        }
     }
 
     form.addEventListener("input", updateResult);
