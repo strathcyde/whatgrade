@@ -89,6 +89,9 @@
 }
 
 @media (max-width: 768px) {
+    .containerMAIN{
+        flex-wrap: wrap;
+    }
     .containerHORIZONTAL{
         justify-content: center;
     }
