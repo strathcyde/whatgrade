@@ -27,16 +27,16 @@
             </div>
             <div class="containerHORIZONTAL" id="InfoContainer">
                 <div class="box" id="idmarksOfFinalBox">
-                    <p class="inputbox">Weight of final assessment</p>
-                    <input type="text" name="WeightFinal">
                     <p class='inputbox'>Marks abailable in final assessment, if known</p>
                     <input type="text" name="Marks">
+                    <p class="inputbox">Weight of final assessment, in %</p>
+                    <input type="text" name="WeightFinal">
                 </div>
                 <div class="box" id="idPartOne">
                     <p class='inputbox'>Grade in test 1, in %</p>
-                    <input type="text" name="PartOne" placeholder="75">
+                    <input type="text" name="PartOne" placeholder="78">
                     <p class='inputbox'>Weight on course, in %</p>
-                    <input type="text" name="WeightOne" placeholder="25">
+                    <input type="text" name="WeightOne">
                 </div>
                 <div class="box" id="idPartTwo">
                     <p class='inputbox'>Grade in test 2, in %</p>
@@ -67,6 +67,8 @@
     // const nameArray = ['desired','Marks','PartOne', 'PartTwo', 'PartThree', 'PartFour', 'WeightOne', 'WeightTwo', 'WeightThree', 'WeightFour'];
 
     const form = document.getElementById("forminputs");
+    let result = '_ _ _ %'
+    document.getElementById("idresult").innerText = result;
     // let desired = 0;
     // let Marks = 0;
     // let PartOne = 0;
@@ -97,31 +99,53 @@
         let WeightFinal = eval((form.elements["WeightFinal"]).value.replace(/[^)(0-9+\-*/.]/g, ''));
 
 
-        if (isNaN(desired) || isNaN(Marks) || isNaN(WeightFinal)){
-            let result = 'Err: Please Check Inputs';
+
+
+        // /////////////// - BY GPT - /////////////// - BY GPT - /////////////// //
+        // let desired = form.elements["desired"].value ? eval(form.elements["desired"].value.replace(/[^)(0-9+\-*/.]/g, '')) : 0;
+        // let Marks = form.elements["Marks"].value ? eval(form.elements["Marks"].value.replace(/[^)(0-9+\-*/.]/g, '')) : 0;
+
+        // let PartOne = form.elements["PartOne"].value ? eval(form.elements["PartOne"].value.replace(/[^)(0-9+\-*/.]/g, '')) : 0;
+        // let PartTwo = form.elements["PartTwo"].value ? eval(form.elements["PartTwo"].value.replace(/[^)(0-9+\-*/.]/g, '')) : 0;
+        // let PartThree = form.elements["PartThree"].value ? eval(form.elements["PartThree"].value.replace(/[^)(0-9+\-*/.]/g, '')) : 0;
+        // let PartFour = form.elements["PartFour"].value ? eval(form.elements["PartFour"].value.replace(/[^)(0-9+\-*/.]/g, '')) : 0;
+
+        // let WeightOne = form.elements["WeightOne"].value ? eval(form.elements["WeightOne"].value.replace(/[^)(0-9+\-*/.]/g, '')) : 0;
+        // let WeightTwo = form.elements["WeightTwo"].value ? eval(form.elements["WeightTwo"].value.replace(/[^)(0-9+\-*/.]/g, '')) : 0;
+        // let WeightThree = form.elements["WeightThree"].value ? eval(form.elements["WeightThree"].value.replace(/[^)(0-9+\-*/.]/g, '')) : 0;
+        // let WeightFour = form.elements["WeightFour"].value ? eval(form.elements["WeightFour"].value.replace(/[^)(0-9+\-*/.]/g, '')) : 0;
+        // let WeightFinal = form.elements["WeightFinal"].value ? eval(form.elements["WeightFinal"].value.replace(/[^)(0-9+\-*/.]/g, '')) : 0;
+
+
+
+        if (isNaN(desired)){
+            let result = 'Err: Please Enter Desired grade';
+            document.getElementById("idresult").innerText = result;
+        } else if (eval((WeightFinal ? WeightFinal : 0) + (WeightOne ? WeightOne : 0) + (WeightTwo ? WeightTwo : 0) + (WeightThree ? WeightThree : 0) + (WeightFour ? WeightFour : 0)) != 100){
+            let result = 'Err: Please Check Weight Inputs';
             document.getElementById("idresult").innerText = result;
         } else {
             if (isNaN(PartFour) || isNaN(WeightFour)) {
-                if (isNaN(PartThree) || isNAN(WeightThree)) {
-                    if (isNaN(PartTwo) || isNaN(WeightThree)) {
+                if (isNaN(PartThree) || isNaN(WeightThree)) {
+                    if (isNaN(PartTwo) || isNaN(WeightTwo)) {
                         if (isNaN(PartOne) || isNaN(WeightOne)) {
-                            let result = 'Enter more info';
+                            let result = 'Check Inputs';
                             document.getElementById("idresult").innerText = result;
                         } else {
-                            let result = eval(((desired-((PartOne*WeightOne)/100))/WeightFinal)*Marks);
-                            document.getElementById("idresult").innerText = result;
+                            let result = eval(((desired-((PartOne*WeightOne)/100))/WeightFinal)*100);
+                            document.getElementById("idresult").innerText = Math.round(result*100)/100 + '%';
                         }
                     } else {
-                        let result = eval(((desired-((PartOne*WeightOne+PartTwo*WeightTwo)/100))/WeightFinal)*Marks);
-                        document.getElementById("idresult").innerText = result;
+                        let result = eval(((desired-((PartOne*WeightOne+PartTwo*WeightTwo)/100))/WeightFinal)*100);
+                        document.getElementById("idresult").innerText = Math.round(result*100)/100 + '%';
                     }
                 } else {
-                    let result = eval(((desired-((PartOne*WeightOne+PartTwo*WeightTwo+PartThree*WeightThree)/100))/WeightFinal)*Marks);
-                    document.getElementById("idresult").innerText = result;
+                    let result = eval(((desired-((PartOne*WeightOne+PartTwo*WeightTwo+PartThree*WeightThree)/100))/WeightFinal)*100);
+                    document.getElementById("idresult").innerText = Math.round(result*100)/100 + '%';
                 }
             } else {
-                let result = eval(((desired-((PartOne*WeightOne+PartTwo*WeightTwo+PartThree*WeightThree+PartFour*WeightFour)/100))/WeightFinal)*Marks);
-                document.getElementById("idresult").innerText = result;
+                let result = eval(((desired-((PartOne*WeightOne+PartTwo*WeightTwo+PartThree*WeightThree+PartFour*WeightFour)/100))/WeightFinal)*100);
+                document.getElementById("idresult").innerText = Math.round(result*100)/100 + '%';
             }
         }
     }

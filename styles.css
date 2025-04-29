@@ -11,6 +11,7 @@
     padding: 10px;
     align-items: center;
     background: transparent;
+    box-sizing: border-box;
 }
 
 .sidebar{
@@ -20,11 +21,12 @@
     justify-content: space-between;
     gap:10px;
     padding: 10px;
-    /* align-items: center; */
+    align-items: center;
     background: transparent;
+    box-sizing: border-box;
+    width: fit-content;
 }
 
-/* #4F9CEC blue to go with scheme*/
 .box{
     background-color: #43bee5;
     padding: 2%;
@@ -40,31 +42,34 @@
     text-align: center;
 }
 
-@media (max-width: 768px) {
-    .containerHORIZONTAL{
-        justify-content: center;
-    }
-    .box {
-        flex: 0 0 calc(50% - 10px); /* 2 per row on smaller screens */
-    }
-}
-
 .vbox{
     background-color: #41b853;
     text-align: center;
+    box-sizing: border-box;
     flex: 1;
     padding: 12%;
-    margin: 5%;
-
+    width: fit-content;
+    height: 100%;
 }
 .vbox input {
     text-align: center;
 }
 .resultDiv{
     all: unset;
-    background-color: #fafa00;
-    font-size: 16pt;
+    background-color: #e6e614;
+    font-size: 14pt;
+}
 
+@media (max-width: 768px) {
+    .containerHORIZONTAL{
+        justify-content: center;
+    }
+    .sidebar{
+        width:calc(100%-20px);
+    }
+    .box {
+        flex: 0 0 calc(50% - 10px); /* 2 per row on smaller screens */
+    }
 }
 
 @font-face {
