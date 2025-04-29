@@ -48,7 +48,11 @@
 
 @media (max-width: 768px) {
     .box {
-      flex: 1 1 calc((100% - 20px) / 2); /* 2 per row on smaller screens */
+        flex: 0 0 calc((100% - 20px) / 2); /* 2 per row on smaller screens */
+        padding: 2%;
+        margin: 0;
+        align-items: center;
+        align-content: center;
     }
 }
 
